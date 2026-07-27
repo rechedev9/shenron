@@ -1,0 +1,2 @@
+# Keep Unix entrypoints executable from Windows and Linux checkouts.
+*.sh text eol=lf

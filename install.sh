@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Install the Shenron skills for Codex, Claude Code, or both.
 
 set -euo pipefail
 

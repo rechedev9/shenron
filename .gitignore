@@ -10,6 +10,8 @@ Thumbs.db
 
 # Dependencies
 node_modules/
+__pycache__/
+*.pyc
 
 # Build output
 dist/
@@ -17,13 +19,10 @@ dist/
 # Temp
 *.log
 
-# WorkflowRSN (installed per-project, not distributed)
-scripts/
+# Local Shenron run artifacts when a consumer chooses a worktree-local path
+.shenron/
 
-# Go build
-sdd-cli/bin/
-
-# SDD cache and ephemeral artifacts
+# Cache and ephemeral artifacts
 **/.cache/
 
 # Internal planning docs (not distributed)
@@ -32,5 +31,4 @@ TODOS.md
 *.txt
 CLAUDE.md
 **/CLAUDE.md
-cligocontext.md
 .gstack/

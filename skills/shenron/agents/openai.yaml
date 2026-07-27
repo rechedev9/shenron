@@ -1,0 +1,7 @@
+interface:
+  display_name: "Shenron"
+  short_description: "Four-worktree adversarial delivery loop"
+  default_prompt: "Use $shenron to implement this feature through isolated worktrees and dual adversarial review."
+
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,7 @@
+interface:
+  display_name: "E2E QA Team"
+  short_description: "Evidence-led QA with 12 specialist agents"
+  default_prompt: "Use $e2e-qa-team to verify this release end to end with reproducible evidence."
+
+policy:
+  allow_implicit_invocation: false

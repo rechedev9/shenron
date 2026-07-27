@@ -2,31 +2,38 @@ name: CI
 
 on:
   push:
-    branches: [master]
-    paths: [sdd-cli/**]
   pull_request:
-    branches: [master]
-    paths: [sdd-cli/**]
+
+permissions:
+  contents: read
 
 jobs:
-  test:
+  validate:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: sdd-cli
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-python@v5
         with:
-          go-version: "1.24"
-          cache-dependency-path: sdd-cli/go.sum
+          python-version: "3.12"
 
-      - name: Vet
-        run: go vet ./...
+      - name: Validate skills and repository metadata
+        run: python scripts/validate_skills.py
 
-      - name: Build
-        run: go build ./...
+      - name: Validate Bash installer syntax
+        run: bash -n install.sh
 
-      - name: Test
-        run: go test -race -count=1 ./...
+      - name: Validate PowerShell installer syntax
+        shell: pwsh
+        run: |
+          $tokens = $null
+          $errors = $null
+          [System.Management.Automation.Language.Parser]::ParseFile(
+            (Resolve-Path "install.ps1"),
+            [ref]$tokens,
+            [ref]$errors
+          ) | Out-Null
+          if ($errors.Count -gt 0) {
+            $errors | ForEach-Object { Write-Error $_ }
+            exit 1
+          }

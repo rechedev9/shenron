@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/shenron.svg" alt="Shenron" width="720">
+  <img src="assets/shenron-hero.png" alt="Shenron adversarial delivery loop" width="720">
 </p>
 
 <h1 align="center">Shenron</h1>
